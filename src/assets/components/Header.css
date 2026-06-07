@@ -28,3 +28,23 @@
     max-width: 500px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
+
+
+/* Vista Mobile First */
+
+@media (max-width: 768px){
+
+    #slogan{
+      margin-left: 0;
+      text-align: center;
+      font-size: 1.6rem;
+      padding: 0 20px;
+    }
+
+    
+  .header-container {
+    height: 250px;
+    justify-content: center;
+  }
+
+}

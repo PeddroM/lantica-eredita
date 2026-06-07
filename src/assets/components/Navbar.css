@@ -63,3 +63,24 @@
 .nav-total i{
     color: #2e7d32;
 }
+
+/* Vista Mobile First */
+
+@media (max-width: 768px){
+    
+  .navbar{
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .nav-links ul{
+    padding: 0;
+    gap: 15px;
+  }
+
+  .nav-total{
+    margin-left: 0;
+  }
+}

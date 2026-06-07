@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <>
     <header className='header-container'>
-      <img className='banner' src="https://st.depositphotos.com/1558912/56711/i/450/depositphotos_567115532-stock-photo-traditional-italian-pizza-with-salami.jpg" alt="banner" />
+      <img className='banner' src="https://www.pizza-shop-11.com/upload-diaporamas/medium/image-banniere.jpg" alt="banner" />
 
       <p id='slogan'>El secreto del pasado, en el horno de hoy.</p>
     </header>

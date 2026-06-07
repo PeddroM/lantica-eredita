@@ -5,14 +5,16 @@ import CardPizza from './assets/components/CardPizza'
 import Footer from './assets/components/Footer'
 import Register from './assets/components/Register'
 import Login from './assets/components/Login'
+import Cart from './assets/components/Cart'
 
 const App = () => {
   return (
     <>
       <Navbar/>
       {/* <Home/> */}
-      <Register/>
-   {/*   <Login/> */}
+      <Cart/>
+      {/* <Register/>
+      <Login/> */}
       <Footer/>
     </>
   )
