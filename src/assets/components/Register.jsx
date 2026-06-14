@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import './Register-Login.css'
+/* import './Register-Login.css' */
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 const Register = () => {
 
@@ -47,11 +50,17 @@ const Register = () => {
 
   return (
     <>
+
+   
+
+    <Container>
+
     <div className="register-container">
 
      <h1>Register</h1>
 
       <form className='register-form' onSubmit={handleForm}>
+        
         <input className='register-input'
         type="text"
         name='name'
@@ -103,6 +112,9 @@ const Register = () => {
         <button className='register-btn' type='submit'>Register</button>
       </form>
     </div>
+
+    </Container>
+
     </>
   )
 }

@@ -1,19 +1,3 @@
-import React from 'react'
-import './CardPizza.css'
-
-const CardPizza = ({name, price, ingredients=[], img}) => {
-  return (
-    <div className="card">
-        <img src={img} className='card-img' alt={name}/>
-        <h2 className='name-pizza'>{name}</h2>
-        <p className='pizza-price'>Price: ${price ? price.toLocaleString('es-CL'): ''}</p>
-        <p className='ingredients-pizza'>Ingredients: {ingredients.join (', ')}</p>
-    </div>
-  )
-}
-
-export default CardPizza
-
 export const pizzas = [
   {
     desc: "La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda. El término pizza napoletana, por su importancia histórica o regional, se emplea en algunas zonas como sinónimo de pizza tonda.",
@@ -65,7 +49,27 @@ export const pizzas = [
   },
 ];
 
-  
-
-
-
+// Simulación de un carrito de compras
+export const pizzaCart = [
+  {
+    id: "P001",
+    name: "napolitana",
+    price: 5950,
+    count: 1,
+    img: "https://easyways.cl/storage/20210208143331pizza-napolitana.jpg",
+  },
+  {
+    id: "P002",
+    name: "española",
+    price: 7250,
+    count: 1,
+    img: "https://rosselotsurdelivery.cl/wp-content/uploads/2020/05/PIZZA-PEPERONI.png",
+  },
+  {
+    id: "P003",
+    name: "salame",
+    price: 5990,
+    count: 1,
+    img: "https://tofuu.getjusto.com/orioneat-local/resized2/9gqKogjhnYvPLK6yE-1400-x.webp",
+  },
+];

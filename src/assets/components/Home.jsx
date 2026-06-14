@@ -1,15 +1,85 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header'
-import CardPizza from './CardPizza'
+import CardPizza, {pizzas as pizzasData} from './CardPizza'
+
 
 const Home = () => {
+
+  /* const [pizzas, setPizzas] = useState(pizzasData); */
+
+  const [pizzas, setPizzas] = useState([])
+
+
+  
+  useEffect (() =>{
+    
+    const cargarPizzas = async () =>{
+      try {
+        const url = 'http://localhost:5000/api/pizzas'
+        const response = await fetch(url)
+        const data = await response.json()
+        
+        setPizzas(data)
+        
+      } catch (error) {
+        console.error("Error al cargar las pizzas:", error)
+        
+      }
+    }
+    
+    cargarPizzas()
+  }, [])
+
+
+  //coloque esto de manera temporaria ya que los enlacea de las fotos de la api están caídos
+  const fotosReemplazo ={
+  "napolitana": "https://images.unsplash.com/photo-1513104890138-7c749659a591",
+  "española": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38",
+  "salame": "https://images.unsplash.com/photo-1594007654729-407eedc4be65",
+  "cuatro estaciones": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002",
+  "bacon": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca",
+  "pollo picante": "https://images.unsplash.com/photo-1628840042765-356cda07504e"
+}
+  
   return (
     <>
       <Header/>
 
       <div className="pizza-container">
 
-        <CardPizza
+        {pizzas.map((pizza)=>{
+
+          const cambioFoto = fotosReemplazo[pizza.name]
+
+          return(
+            <CardPizza
+              key={pizza.id}
+              id={pizza.id}
+              name={pizza.name}
+              price={pizza.price}
+              ingredients={pizza.ingredients}
+              img={cambioFoto}
+            />
+          )
+        })}
+
+      </div>
+
+
+
+    </>
+  )
+}
+
+
+export default Home
+
+
+
+
+
+
+{/* <CardPizza
           id="P001"
           name="Napolitana"
           price={5950}
@@ -55,15 +125,4 @@ const Home = () => {
           price={8500}
           ingredients={["mozzarella", "pimientos", "pollo grillé", "orégano"]}
           img="https://thumbs.dreamstime.com/b/porciones-de-pizza-pollo-picante-sobre-madera-428688426.jpg"
-        />
-
-
-
-
-      </div>
-    </>
-  )
-}
-
-
-export default Home
+        /> */}

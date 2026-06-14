@@ -6,15 +6,17 @@ import Footer from './assets/components/Footer'
 import Register from './assets/components/Register'
 import Login from './assets/components/Login'
 import Cart from './assets/components/Cart'
+import Pizza from './assets/components/Pizza'
 
 const App = () => {
   return (
     <>
       <Navbar/>
       {/* <Home/> */}
-      <Cart/>
-      {/* <Register/>
-      <Login/> */}
+      {/* <Register/> */}
+     {/*  <Login/> */}
+    {/*   <Cart/> */}
+    <Pizza/>
       <Footer/>
     </>
   )
