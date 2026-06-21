@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-/* import './Register-Login.css' */
+import '../assets/CSS/Register-Login.css'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -53,7 +53,7 @@ const Register = () => {
 
    
 
-    <Container>
+   
 
     <div className="register-container">
 
@@ -113,7 +113,7 @@ const Register = () => {
       </form>
     </div>
 
-    </Container>
+   
 
     </>
   )

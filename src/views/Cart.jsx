@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import {PizzaCart} from  './PizzaCart'
-import './Cart.css'
+import {PizzaCart} from  '../components/PizzaCart'
+import '../assets/CSS/Cart.css'
 
 const Cart = () => {
     
@@ -88,7 +88,7 @@ const Cart = () => {
 
             <div className='cart-total'>
                 <h3 className='monto-total'>Total: ${cacularTotal().toLocaleString('es-CL')}</h3>
-                <button className='comprar-btn'>Ir a Paga</button>
+                <button className='comprar-btn'>Ir a Pagar</button>
             </div>
         </div>
         )}

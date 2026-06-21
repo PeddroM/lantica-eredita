@@ -1,5 +1,6 @@
 import React from 'react'
-import './CardPizza.css'
+import '../assets/CSS/CardPizza.css'
+import { Link } from 'react-router-dom'
 
 const CardPizza = ({name, price, ingredients=[], img}) => {
   return (

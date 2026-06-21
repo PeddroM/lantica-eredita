@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Header from './Header'
-import CardPizza, {pizzas as pizzasData} from './CardPizza'
+import Header from '../components/Header'
+import CardPizza, {pizzas as pizzasData} from '../components/CardPizza'
 
 
 const Home = () => {

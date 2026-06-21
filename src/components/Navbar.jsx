@@ -1,5 +1,6 @@
 import React from 'react'
-import './Navbar.css'
+import '../assets/CSS/Navbar.css'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const total = 25000;
@@ -13,7 +14,9 @@ const Navbar = () => {
         </div>
             <div className="nav-links">
                 <ul>
-                    <li><a href="#Home">Home<span><i class="fa-solid fa-pizza-slice"></i></span></a></li>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
 
                    {token ? (
                     <>
@@ -22,8 +25,15 @@ const Navbar = () => {
                     </>
                 ) : (
                     <>
-                        <li><a href="#Login">Login</a></li>
-                        <li><a href="#Register">Register</a></li>
+                        <li>
+                            <Link to="/Login">Login</Link>
+                        </li>
+                        <li>
+                            <Link to="/Register">Register</Link>
+                        </li>
+                        <li>
+                            <Link to="/Profile">Profile</Link>
+                        </li>
                     </>
                 )}
 
@@ -31,7 +41,7 @@ const Navbar = () => {
             </div>
 
         <div className="nav-total">
-                    <a href="#Total">Total: {total.toLocaleString('es-CL')} <span><i class="fa-solid fa-cart-shopping"></i></span></a>
+                    <Link to="/Cart">Total: {total.toLocaleString('es-CL')} <span><i class="fa-solid fa-cart-shopping"></i></span></Link>
         </div>
      </nav>
     </>

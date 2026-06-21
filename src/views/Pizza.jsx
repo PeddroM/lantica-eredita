@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CardPizza from './CardPizza'
+import CardPizza from '../components/CardPizza'
 import { Box } from '@mui/material'
 import Button from '@mui/material/Button'
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
