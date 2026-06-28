@@ -1,14 +1,30 @@
 import React from 'react'
 import '../assets/CSS/CardPizza.css'
 import { Link } from 'react-router-dom'
+import { Box, Button, Stack } from '@mui/material'
+import { ShoppingCart } from '@mui/icons-material'
 
-const CardPizza = ({name, price, ingredients=[], img}) => {
+const CardPizza = ({name, price, ingredients=[], img, agregarAlCarrito, id}) => {
   return (
     <div className="card">
         <img src={img} className='card-img' alt={name}/>
         <h2 className='name-pizza'>{name}</h2>
         <p className='pizza-price'>Price: ${price ? price.toLocaleString('es-CL'): ''}</p>
         <p className='ingredients-pizza'>Ingredients: {ingredients.join (', ')}</p>
+        <Link to={`/pizza/${id}`} className="link-ver-mas">Ver Más</Link>
+
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+
+
+         <Stack direction="row" spacing={2}>
+         < Button variant='outlined' color='success' endIcon={<ShoppingCart/>} onClick={agregarAlCarrito}>Añadir al Carrito</Button>
+
+        {/*  <Button variant='outlined' color='inherit' component={Link}  to={`/pizza/${id}`}> Ver Más </Button> */}
+      
+         </Stack>
+
+        </Box>
+
     </div>
   )
 }

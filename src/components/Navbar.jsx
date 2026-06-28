@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../assets/CSS/Navbar.css'
 import { Link } from 'react-router-dom';
+import { PizzaDataContext } from '../contexts/PizzaContext';
 
 const Navbar = () => {
-    const total = 25000;
+    
     const token = false;
+
+    const {calcularTotal} = useContext(PizzaDataContext)
 
   return (
     <>
@@ -18,12 +21,6 @@ const Navbar = () => {
                         <Link to="/">Home</Link>
                     </li>
 
-                   {token ? (
-                    <>
-                        <li><a href="Profile">Profile</a></li>
-                        <li><a href="Logout">Logout</a></li>
-                    </>
-                ) : (
                     <>
                         <li>
                             <Link to="/Login">Login</Link>
@@ -35,13 +32,12 @@ const Navbar = () => {
                             <Link to="/Profile">Profile</Link>
                         </li>
                     </>
-                )}
 
                 </ul>
             </div>
 
         <div className="nav-total">
-                    <Link to="/Cart">Total: {total.toLocaleString('es-CL')} <span><i class="fa-solid fa-cart-shopping"></i></span></Link>
+                    <Link to="/Cart">Total: ${calcularTotal().toLocaleString('es-CL')} <span><i class="fa-solid fa-cart-shopping"></i></span></Link>
         </div>
      </nav>
     </>

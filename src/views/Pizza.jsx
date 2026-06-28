@@ -3,17 +3,20 @@ import CardPizza from '../components/CardPizza'
 import { Box } from '@mui/material'
 import Button from '@mui/material/Button'
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+import { useParams } from 'react-router-dom'
 
 
 const Pizza = () => {
 
-   const [pizza, setPizza] = useState({})
+   const [pizza, setPizza] = useState(null)
+
+   const {id} = useParams()
 
   useEffect (() =>{
       
       const cargarPizza = async () =>{
         try {
-          const url = 'http://localhost:5000/api/pizzas/p001'
+          const url = `http://localhost:5000/api/pizzas/${id}`
           const response = await fetch(url)
           const data = await response.json()
   
@@ -23,10 +26,15 @@ const Pizza = () => {
           console.error("Error al cargar las pizzas:", error)
           
         }
+        
       }
   
       cargarPizza()
-    }, [])
+    }, [id])
+
+    if (!pizza || !pizza.name) {
+    return
+  }
 
     //coloque esto de manera temporaria ya que los enlacea de las fotos de la api están caídos
     const fotoReemplazo ={

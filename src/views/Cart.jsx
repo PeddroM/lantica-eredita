@@ -1,12 +1,21 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {PizzaCart} from  '../components/PizzaCart'
 import '../assets/CSS/Cart.css'
+import { PizzaDataContext } from '../contexts/PizzaContext'
+
+
 
 const Cart = () => {
     
-    const [cart, setCart] = useState(PizzaCart)
+   /*  /* const [cart, setCart] = useState(PizzaCart) */
 
-    const agregarPizza = (id)=>{
+   const {cart, agregarAlCarrito, quitarDelCarrito, calcularTotal} = useContext(PizzaDataContext)
+   
+
+   
+
+
+    /* const agregarPizza = (id)=>{
 
         const pizzaSeleccionada = cart.map((pizza)=>{
             if(pizza.id === id){
@@ -47,10 +56,13 @@ const Cart = () => {
         })
 
         return sumaTotal
-    }
+    } */
 
 
   return (
+
+    <>
+
     <div className='cart-container'>
         <h1>Detalles del Pedido</h1>
 
@@ -74,9 +86,9 @@ const Cart = () => {
 
                                 <div className='cart-counter'>
                                     
-                                    <button className='aumentar-btn' onClick={() => agregarPizza(pizza.id)}><i className="fa-solid fa-plus"></i></button>
+                                    <button className='aumentar-btn' onClick={() => agregarAlCarrito(pizza)}><i className="fa-solid fa-plus"></i></button>
 
-                                    <button className='disminuir-btn' onClick={() => eliminarPizza(pizza.id)}><i className="fa-solid fa-minus"></i></button>
+                                    <button className='disminuir-btn' onClick={() => quitarDelCarrito(pizza.id)}><i className="fa-solid fa-minus"></i></button>
 
                                 </div>
                             </div>
@@ -87,13 +99,14 @@ const Cart = () => {
                 })}
 
             <div className='cart-total'>
-                <h3 className='monto-total'>Total: ${cacularTotal().toLocaleString('es-CL')}</h3>
+                <h3 className='monto-total'>Total: ${calcularTotal().toLocaleString('es-CL')}</h3>
                 <button className='comprar-btn'>Ir a Pagar</button>
             </div>
         </div>
         )}
   
     </div>
+    </>
   )
 }
 

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import CardPizza, {pizzas as pizzasData} from '../components/CardPizza'
+import { Button } from '@mui/material'
+import { PizzaDataContext } from '../contexts/PizzaContext'
+import { useContext } from 'react'
 
 
 const Home = () => {
@@ -30,6 +33,7 @@ const Home = () => {
     cargarPizzas()
   }, [])
 
+  const {agregarAlCarrito} = useContext(PizzaDataContext)
 
   //coloque esto de manera temporaria ya que los enlacea de las fotos de la api están caídos
   const fotosReemplazo ={
@@ -51,6 +55,7 @@ const Home = () => {
 
           const cambioFoto = fotosReemplazo[pizza.name]
 
+
           return(
             <CardPizza
               key={pizza.id}
@@ -59,9 +64,12 @@ const Home = () => {
               price={pizza.price}
               ingredients={pizza.ingredients}
               img={cambioFoto}
+              agregarAlCarrito={() => agregarAlCarrito(pizza, cambioFoto)}
             />
           )
         })}
+
+        {/* <button onClick={agregar.añadirAlCarrito}>Añadir al Carrito</button> */}
 
       </div>
 

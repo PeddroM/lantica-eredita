@@ -10,10 +10,13 @@ import Cart from './views/Cart'
 import Pizza from './views/Pizza'
 import { Routes, Route } from 'react-router-dom'
 import NotFound from './components/NotFound'
+import { PizzaContextProvider } from './contexts/PizzaContext'
 
 const App = () => {
   return (
     <>
+    <PizzaContextProvider>
+
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home />} />
@@ -21,7 +24,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/cart' element={<Cart />} />
-        <Route path='/pizza/p001' element={<Pizza />} />
+        <Route path='/pizza/:id' element={<Pizza />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     {/*   <Home/> */}
@@ -30,6 +33,7 @@ const App = () => {
       {/* <Cart/> */}
       {/* <Pizza/> */}
       <Footer/>
+    </PizzaContextProvider>
     </>
   )
 }

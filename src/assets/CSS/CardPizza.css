@@ -44,3 +44,17 @@
     box-sizing: border-box;
 }
 
+
+.link-ver-mas {
+  color: #333333;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+  transition: color 0.2s ease;
+}
+
+.link-ver-mas:hover {
+  color: #2e7d32;
+}
