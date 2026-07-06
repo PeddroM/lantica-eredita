@@ -11,18 +11,24 @@ import Pizza from './views/Pizza'
 import { Routes, Route } from 'react-router-dom'
 import NotFound from './components/NotFound'
 import { PizzaContextProvider } from './contexts/PizzaContext'
+import { UserContextProvider } from './contexts/UserContext'
+import { ProtectorDeRuta, RutaPublica } from './components/Protector'
 
 const App = () => {
   return (
     <>
+
+    <UserContextProvider>
+
     <PizzaContextProvider>
 
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/profile' element={<Profile />} />
+
+        <Route path='/register' element={<RutaPublica> <Register /> </RutaPublica>} />
+        <Route path='/login' element={<RutaPublica> <Login /> </RutaPublica>} />
+        <Route path='/profile' element={<ProtectorDeRuta> <Profile /> </ProtectorDeRuta>} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/pizza/:id' element={<Pizza />} />
         <Route path='*' element={<NotFound />} />
@@ -34,6 +40,8 @@ const App = () => {
       {/* <Pizza/> */}
       <Footer/>
     </PizzaContextProvider>
+
+    </UserContextProvider>
     </>
   )
 }

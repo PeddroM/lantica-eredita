@@ -69,7 +69,7 @@ const Home = () => {
           )
         })}
 
-        {/* <button onClick={agregar.añadirAlCarrito}>Añadir al Carrito</button> */}
+
 
       </div>
 

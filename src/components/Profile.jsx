@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box, Card, CardContent, Typography, Button, Avatar } from '@mui/material'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import LogoutIcon from '@mui/icons-material/Logout'
+import { UserDataContext } from '../contexts/UserContext'
 
 const Profile = () => {
 
   const emailUsuario = "pizzeria@lanticaeredita.cl"
 
+  const { logOut } = useContext(UserDataContext)
+
   const handleLogout = () => {
     alert("Has cerrado sesión correctamente. ¡Vuelve pronto a L'Antica Eredità!")
+    logOut()
   }
 
   return (

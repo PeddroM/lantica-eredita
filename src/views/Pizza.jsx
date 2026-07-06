@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import CardPizza from '../components/CardPizza'
 import { Box } from '@mui/material'
 import Button from '@mui/material/Button'
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import { useParams } from 'react-router-dom'
+import { PizzaDataContext } from '../contexts/PizzaContext'
 
 
 const Pizza = () => {
@@ -11,6 +12,7 @@ const Pizza = () => {
    const [pizza, setPizza] = useState(null)
 
    const {id} = useParams()
+   
 
   useEffect (() =>{
       
@@ -38,9 +40,18 @@ const Pizza = () => {
 
     //coloque esto de manera temporaria ya que los enlacea de las fotos de la api están caídos
     const fotoReemplazo ={
-  "napolitana": "https://images.unsplash.com/photo-1513104890138-7c749659a591",}
+  "napolitana": "https://images.unsplash.com/photo-1513104890138-7c749659a591",
+  "española": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38",
+  "salame": "https://images.unsplash.com/photo-1594007654729-407eedc4be65",
+  "cuatro estaciones": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002",
+  "bacon": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca",
+  "pollo picante": "https://images.unsplash.com/photo-1628840042765-356cda07504e"}
 
   const cambioFoto = fotoReemplazo[pizza.name]
+
+   const {agregarAlCarrito} = useContext(PizzaDataContext)
+  
+  
     
   return (
     <>
@@ -61,9 +72,10 @@ const Pizza = () => {
         <p className='description'>{pizza.desc}</p>
 
          <Button
-         variant='contained'
-         color='inherit'
-         startIcon={<ShoppingCartIcon />}>
+         variant='outlined'
+         color='success'
+         endIcon={<ShoppingCartIcon />}
+         onClick={() => agregarAlCarrito(pizza)}>
           Añadir al carrito
         </Button>
 
