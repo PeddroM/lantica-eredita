@@ -6,7 +6,7 @@ import { UserDataContext } from '../contexts/UserContext';
 
 const Navbar = () => {
 
-    const {profile, logOut} = useContext(UserDataContext)
+    const {token, logOut} = useContext(UserDataContext)
     
     const activeClass = ({isActive}) => (isActive ? "active" : "")
 
@@ -26,9 +26,10 @@ const Navbar = () => {
 
         <NavLink className={activeClass} to='/'>Home</NavLink>
 
-       {profile ? (
+       {token ? (
            <>
         <NavLink className={activeClass} to='/profile'>Profile</NavLink>
+        <button style={{ background: 'transparent', border: 'none', color: 'white', cursor: 'pointer', fontSize: '1rem' }} onClick={logOut}>Logout</button>
         </>
        ) : (
            <>
@@ -62,7 +63,7 @@ const Navbar = () => {
             </div> */}
 
         <div className="nav-total">
-                    <Link to="/Cart">Total: ${calcularTotal().toLocaleString('es-CL')} <span><i class="fa-solid fa-cart-shopping"></i></span></Link>
+                    <Link to="/Cart">Total: ${calcularTotal().toLocaleString('es-CL')} <span><i className="fa-solid fa-cart-shopping"></i></span></Link>
         </div>
      </nav>
     </>

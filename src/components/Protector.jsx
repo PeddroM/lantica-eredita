@@ -4,9 +4,9 @@ import { useContext } from "react"
 
 export const ProtectorDeRuta = ({children}) =>{
 
-    const {profile} = useContext(UserDataContext)
+    const {token} = useContext(UserDataContext)
 
-    if(!profile){
+    if(!token){
         return <Navigate to='/login' />
     }
 
@@ -15,9 +15,9 @@ export const ProtectorDeRuta = ({children}) =>{
 
 export const RutaPublica = ({children}) =>{
 
-    const {profile} = useContext(UserDataContext)
+    const {token} = useContext(UserDataContext)
 
-    if (profile){
+    if (token){
         return <Navigate to='/'/>
     }
     return children

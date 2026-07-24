@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '../assets/CSS/Register-Login.css'
+import { UserDataContext } from '../contexts/UserContext'
+
 
 const Login = () => {
 
     const [values, setValues] = useState({
         email: "",
-        password: "lanticaeredita123"
+        password: ""
     })
+
+    const {login} = useContext(UserDataContext)
 
     const handleInputChange = (event)=>{
         const {name, value} = event.target;
@@ -16,7 +20,7 @@ const Login = () => {
         });
     }
 
-    const handleForm = (event)=>{
+    const handleForm = async (event)=>{
         event.preventDefault()
         console.log(values)
         
@@ -25,12 +29,7 @@ const Login = () => {
             return
         }
 
-        if(values.password !== "lanticaeredita123"){
-            alert("La contraseña o el email no coinciden")
-            return
-        }
-
-        alert("¡Inicio de sesión exitoso! Bienvenido a L'Antica Eredità")
+        await login(values.email, values.password)
     
     }
   return (

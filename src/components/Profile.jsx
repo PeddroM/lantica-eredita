@@ -1,14 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Box, Card, CardContent, Typography, Button, Avatar } from '@mui/material'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { UserDataContext } from '../contexts/UserContext'
 
+
 const Profile = () => {
 
-  const emailUsuario = "pizzeria@lanticaeredita.cl"
+  /* const emailUsuario = "pizzeria@lanticaeredita.cl" */
 
-  const { logOut } = useContext(UserDataContext)
+  const {email, logOut, getProfile} = useContext(UserDataContext)
+
+  useEffect(() => {
+    getProfile()
+  }, [])
+
+  /* const { logOut } = useContext(UserDataContext) */
 
   const handleLogout = () => {
     alert("Has cerrado sesión correctamente. ¡Vuelve pronto a L'Antica Eredità!")
@@ -41,7 +48,7 @@ const Profile = () => {
           </Typography>
 
           <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-            Email: {emailUsuario}
+            Email: {email}
           </Typography>
 
           <Button 

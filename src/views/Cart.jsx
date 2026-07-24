@@ -10,7 +10,10 @@ const Cart = () => {
    /*  /* const [cart, setCart] = useState(PizzaCart) */
 
    const {cart, agregarAlCarrito, quitarDelCarrito, calcularTotal} = useContext(PizzaDataContext)
-
+   
+   const {token} = useContext(UserDataContext)
+   
+   
    const fotosReemplazo ={
   "napolitana": "https://images.unsplash.com/photo-1513104890138-7c749659a591",
   "española": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38",
@@ -18,9 +21,40 @@ const Cart = () => {
   "cuatro estaciones": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002",
   "bacon": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca",
   "pollo picante": "https://images.unsplash.com/photo-1628840042765-356cda07504e"
-}
+ }
 
-const {profile} = useContext(UserDataContext)
+ 
+   const handleComprar = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/checkouts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ cart })
+      })
+
+      if (response.ok) {
+        alert("¡Compra realizada con éxito! 🍕🎉")
+      } else {
+        alert("Error al realizar la compra")
+      }
+    } catch (error) {
+      console.error("Error al realizar la compra:", error)
+      alert("Error al conectar con el servidor")
+    }
+  }
+
+   
+
+
+   
+
+
+/* const {profile} = useContext(UserDataContext) */
+
+
 
 
    
@@ -117,7 +151,7 @@ const {profile} = useContext(UserDataContext)
 
             <div className='cart-total'>
                 <h3 className='monto-total'>Total: ${calcularTotal().toLocaleString('es-CL')}</h3>
-                <button className='comprar-btn'disabled={!profile}>{profile ? "Ir a pagar" : "Inicia sesión para completar la compraq"}</button>
+                <button className='comprar-btn'disabled={!token} onClick={handleComprar}>{token ? "Ir a pagar" : "Inicia sesión para completar la compraq"}</button>
             </div>
         </div>
         )}

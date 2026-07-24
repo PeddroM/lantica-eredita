@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '../assets/CSS/Register-Login.css'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { UserDataContext } from '../contexts/UserContext';
 
 const Register = () => {
 
@@ -15,6 +16,8 @@ const Register = () => {
         phone: "",
     })
 
+    const {register} = useContext(UserDataContext)
+
     const handleInputChange = (event)=>{
         const {name, value} = event.target;
         setValues({
@@ -24,9 +27,8 @@ const Register = () => {
     }
     
 
-    const handleForm = (event)=>{
+    const handleForm = async (event)=>{
         event.preventDefault()
-        console.log(values)
 
         if(!values.name || !values.lastName || !values.email || !values.password || !values.confirmPassword || !values.phone){
             alert("Debes completar todos los campos requeridos")
@@ -43,17 +45,12 @@ const Register = () => {
             return
         }
 
-        alert("¡Registro exitoso! Bienvenido a L'Antica Eredità")
-        return
+        await register(values.email, values.password)
     }
 
 
   return (
     <>
-
-   
-
-   
 
     <div className="register-container">
 
